@@ -57,7 +57,7 @@ module.exports = (opts) => {
   /*
    * Report on any linting issues in the code.
    */
-  gulp.task(input.tasksPrefix + 'lint', function lintTask() {
+  gulp.task(input.tasksPrefix + 'lint', function () {
     return gulp.src(input.glob)
       .pipe(lint())
       .pipe(lint.format())
@@ -67,15 +67,15 @@ module.exports = (opts) => {
   /*
    * Watch for linting issues.
    */
-  gulp.task(input.tasksPrefix + 'watchLint', function watchLintTask() {
-    watch(input.glob, function watchLint(file) {
+  gulp.task(input.tasksPrefix + 'watch-lint', function () {
+    watch(input.glob, function (file) {
       console.log('watch lint: ' + file.path + ' event: ' + file.event);
       if (file.event !== 'unlink') {
         gulp.src(file.path)
           .pipe(lint())
           .pipe(lint.format())
           .pipe(lint.failOnError())
-          .on('error', function lintError() {
+          .on('error', function () {
             notify(null, 'Lint Error', 'See console for details.');
           });
       }
