@@ -1,0 +1,14 @@
+# Lists files and folders that are not to be included in the npm package.
+
+# npm stuff
+node_modules/
+npm-debug.log
+
+# mac system file
+.DS_Store
+
+# generated stuff
+testResults/
+
+# tests
+src/tests/
