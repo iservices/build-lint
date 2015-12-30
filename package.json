@@ -1,6 +1,6 @@
 {
   "name": "build-lint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Build tasks for linting.",
   "main": "src/index.js",
   "scripts": {

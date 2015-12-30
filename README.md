@@ -37,7 +37,7 @@ Within this file you will register the gulp tasks that are defined within this p
 The following is an example of this.
 
 ```
-'strict';
+'use strict';
 
 const lint = require('build-lint');
 
