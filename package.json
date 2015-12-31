@@ -1,6 +1,6 @@
 {
   "name": "build-lint",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Build tasks for linting.",
   "main": "src/index.js",
   "scripts": {
@@ -15,14 +15,14 @@
     "type": "git",
     "url": "https://github.com/iservices/build-lint.git"
   },
-  "dependencies": {
+  "peerDependencies": {
     "eslint": "^1.10.3",
     "eslint-config-iservices": "^1.0.2",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-watch": "^4.3.5"
+    "gulp-eslint": "^1.1.1"
   },
   "devDependencies": {
-    "build-test": "^1.0.2"
+    "build-test": "^1.0.2",
+    "gulp-watch": "^4.3.5"
   }
 }

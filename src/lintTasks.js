@@ -9,7 +9,6 @@
 
 const gulp = require('gulp');
 const lint = require('gulp-eslint');
-const watch = require('gulp-watch');
 
 /**
   * This function is used to notify developers of an error that occured
@@ -68,6 +67,7 @@ module.exports = (opts) => {
    * Watch for linting issues.
    */
   gulp.task(input.tasksPrefix + 'watch-lint', function () {
+    const watch = require('gulp-watch');
     watch(input.glob, function (file) {
       console.log('watch lint: ' + file.path + ' event: ' + file.event);
       if (file.event !== 'unlink') {
