@@ -12,7 +12,12 @@ To install this package execute the following npm console command from within yo
 npm install --save-dev build-lint
 ```
 
-When the package installs it will include the definitions for the linting gulp tasks as well as the eslint and eslint-config-iservices packages as peer dependencies.
+When the package installs it will include the definitions for the linting gulp tasks as well as the eslint and eslint-config-iservices packages as dependencies.
+
+In order for eslint to work with the iservices standardized rules the eslint-config-iservices package needs to be installed at the root level within the node_modules folder of your project.
+If you are using npm version 3 or greater this should happen automatically.  Older versions of npm will install the eslint-config-iservices package within the build-lint folder so you will 
+need to execute the `npm dedupe` console command from within your project after installing the build-lint package.  This will remove duplicate dependencies and flatten out the dependency structure of your installed packages.
+
 Before you start using the linting tasks you will need to add an `.eslintrc` file to the root folder of your project.  The contents of this file should look like the following.
 
 ```
