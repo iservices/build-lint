@@ -40,11 +40,13 @@ function notify(err, title, message) {
  * @param {object} opts - Configuration options
  * @param {string|string[]} opts.glob - Glob patterns identifying the code to lint.
  * @param {string} [opts.tasksPrefix] - An optional prefix for the registered tasks.
+ * @param {string[]} [opts.tasksDependencies] - Optional array of tasks names that must be completed before these registered tasks runs.
  * @returns {functions} - A function used to register gulp tasks
  */
 module.exports = (opts) => {
   const input = {
-    glob: opts.glob
+    glob: opts.glob,
+    tasksDependencies: opts.tasksDependencies || []
   };
 
   if (opts.tasksPrefix) {
@@ -56,7 +58,7 @@ module.exports = (opts) => {
   /*
    * Report on any linting issues in the code.
    */
-  gulp.task(input.tasksPrefix + 'lint', function () {
+  gulp.task(input.tasksPrefix + 'lint', input.tasksDependencies, function () {
     return gulp.src(input.glob)
       .pipe(lint())
       .pipe(lint.format())

@@ -1,5 +1,7 @@
 # build-lint
 
+This package is currently in **BETA**
+
 ## Overview
 This is a node package that defines gulp tasks that can be used to perform linting.
 It uses [eslint](https://www.npmjs.com/package/eslint) to perform linting and includes the [eslint-config-iservices](https://www.npmjs.com/package/eslint-config-iservices) package which defines the linting rules to be applied.
@@ -85,4 +87,10 @@ Type: `String`
 
 This is an optional parameter that when set will add a prefix to the names of the tasks that get registered.  For example, if tasksPrefix is set to 'hello' then the task that 
 would have been registered with the name 'lint' will be registered with the name 'hello-lint' instead.
+
+#### options.tasksDependencies
+
+Type: `String[]`
+
+Optional array of tasks names that must be completed before these registered tasks runs.
  
