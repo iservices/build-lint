@@ -26,7 +26,7 @@ describe('registerTasks', function () {
     });
     gulp.start('passing-lint');
   });
-/*
+  /*
   it('simple failing task setup works as expected.', function (done) {
     require(__dirname + '/fixtures/failing/gulpfile');
     gulp.on('task_stop', function (e) {
@@ -41,18 +41,20 @@ describe('registerTasks', function () {
     });
     gulp.start('failing-lint');
   });
-*/
+  */
   it('simple watch task setup works as expected.', function (done) {
-    this.timeout(4000);
+    this.timeout(8000);
 
     require(__dirname + '/fixtures/watch/gulpfile');
     gulp.on('task_stop', function (e) {
       if (e.task === 'watch-watch-lint') {
-        const text = fs.readFileSync(__dirname + '/fixtures/watch/chat/logger.js', 'utf8');
-        fs.writeFileSync(__dirname + '/fixtures/watch/chat/logger.js', text);
+        setTimeout(function () {
+          const text = fs.readFileSync(__dirname + '/fixtures/watch/chat/logger.js', 'utf8');
+          fs.writeFileSync(__dirname + '/fixtures/watch/chat/logger.js', text);
+        }, 2000);
         setTimeout(function (finish) {
           finish();
-        }, 2000, done);
+        }, 4000, done);
       }
     });
     gulp.start('watch-watch-lint');
