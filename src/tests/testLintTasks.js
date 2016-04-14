@@ -26,7 +26,7 @@ describe('registerTasks', function () {
     });
     gulp.start('passing-lint');
   });
-  /*
+/*
   it('simple failing task setup works as expected.', function (done) {
     require(__dirname + '/fixtures/failing/gulpfile');
     gulp.on('task_stop', function (e) {
@@ -41,7 +41,7 @@ describe('registerTasks', function () {
     });
     gulp.start('failing-lint');
   });
-  */
+*/
   it('simple watch task setup works as expected.', function (done) {
     this.timeout(8000);
 
