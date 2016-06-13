@@ -39,9 +39,12 @@ the glob patterns into actual file paths.
 
 ## API
 
+Usage:
 ```
 build-lint -g <glob pattern> [-g <glob pattern>] [-w]
 ```
+Options:
+
 | Option | Description |
 | ---    | ---         |
 | -g     | A glob pattern that identifies files to lint.  Multiple glob patterns can be specified. |

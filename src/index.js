@@ -40,7 +40,7 @@ if (!argsv.g) {
   //
   // print help info if args are missing
   //
-  console.log('build-lint -g <glob pattern> [-g <glob pattern>] [-w]');
+  console.log('Usage: build-lint -g <glob pattern> [-g <glob pattern>] [-w]');
   console.log('');
   console.log('Options:');
   console.log('-g\t A glob pattern that identifies files to lint.  Multiple glob patterns can be specified.');
