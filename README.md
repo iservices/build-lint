@@ -49,7 +49,6 @@ Options:
 | ---    | ---         |
 | `<files>` | A glob pattern that identifies files to lint.  Multiple glob patterns can be specified. |
 | -w     | When present the files specified in the glob pattern(s) will be watched for changes and linted when they do change. |
-| -W     | This is the same as the -w command except that the specified files will be linted before the watch begins. |
 
 
  

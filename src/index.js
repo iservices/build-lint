@@ -47,9 +47,8 @@ if (!argsv._.length) {
   console.log('Options:');
   console.log('<files>\t A glob pattern that identifies files to lint.  Multiple glob patterns can be specified.');
   console.log('-w\t When present the files specified in the glob pattern(s) will be watched for changes and linted when they do change.');
-  console.log('-W\t This is the same as the -w command except that the specified files will be linted before the watch begins.');
   process.exitCode = 1;
-} else if (argsv.W || !argsv.w) {
+} else {
   //
   // lint files specified and optional begin watch
   //
@@ -57,16 +56,11 @@ if (!argsv._.length) {
     // execute eslint
     eslint(files)
       .on('exit', code => {
-        if (argsv.W) {
+        if (argsv.w) {
           eslintWatch(argsv);
         } else {
           process.exitCode = code;
         }
       });
   });
-} else if (argsv.w) {
-  //
-  // watch for file changes
-  //
-  eslintWatch(argsv);
 }
