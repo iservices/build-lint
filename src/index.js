@@ -22,28 +22,30 @@ function eslint(files) {
  * Watch for changes to the given files and execute eslint when they do change.
  *
  * @ignore
- * @param {String|String[]} globs - The glob patterns that identify the files to watch.
+ * @param {Object} args - The arguments passed into the command line.
  * @return {void}
  */
-function eslintWatch(globs) {
-  const watcher = chokidar.watch(globs, {
-    ignored: /[\/\\]\./,
-    persistent: true
-  });
-  watcher.on('ready', () => {
-    watcher.on('add', path => { eslint([path]); });
-    watcher.on('change', path => { eslint([path]); });
-  });
+function eslintWatch(args) {
+  if (args._.length) {
+    const watcher = chokidar.watch(args._, {
+      ignored: /[\/\\]\./,
+      persistent: true
+    });
+    watcher.on('ready', () => {
+      watcher.on('add', file => { eslint([file]); });
+      watcher.on('change', file => { eslint([file]); });
+    });
+  }
 }
 
-if (!argsv.g) {
+if (!argsv._.length) {
   //
   // print help info if args are missing
   //
-  console.log('Usage: build-lint -g <glob pattern> [-g <glob pattern>] [-w]');
+  console.log('Usage: build-lint <files> [<files>] [-w]');
   console.log('');
   console.log('Options:');
-  console.log('-g\t A glob pattern that identifies files to lint.  Multiple glob patterns can be specified.');
+  console.log('<files>\t A glob pattern that identifies files to lint.  Multiple glob patterns can be specified.');
   console.log('-w\t When present the files specified in the glob pattern(s) will be watched for changes and linted when they do change.');
   console.log('-W\t This is the same as the -w command except that the specified files will be linted before the watch begins.');
   process.exitCode = 1;
@@ -51,12 +53,12 @@ if (!argsv.g) {
   //
   // lint files specified and optional begin watch
   //
-  globby(argsv.g).then(paths => {
+  globby(argsv._).then(files => {
     // execute eslint
-    eslint(paths)
+    eslint(files)
       .on('exit', code => {
         if (argsv.W) {
-          eslintWatch(argsv.g);
+          eslintWatch(argsv);
         } else {
           process.exitCode = code;
         }
@@ -66,5 +68,5 @@ if (!argsv.g) {
   //
   // watch for file changes
   //
-  eslintWatch(argsv.g);
+  eslintWatch(argsv);
 }

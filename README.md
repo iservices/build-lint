@@ -25,8 +25,8 @@ do this within an npm script element.  Take the following excerpt from an exampl
 ```JSON
 {
   "scripts": {
-    "lint": "build-lint -g \"src/**/*.js\" -g \"!src/tests/**/*.js\"",
-    "lint-watch": "build-lint -g \"src/**/*.js\" -g \"!src/tests/**/*.js\" -w",
+    "lint": "build-lint \"src/**/*.js\" \"!src/tests/**/*.js\"",
+    "lint-watch": "build-lint \"src/**/*.js\" \"!src/tests/**/*.js\" -w",
   }
 }
 ```
@@ -41,13 +41,13 @@ the glob patterns into actual file paths.
 
 Usage:
 ```
-build-lint -g <glob pattern> [-g <glob pattern>] [-w]
+build-lint <files> [<files>] [-w]
 ```
 Options:
 
 | Option | Description |
 | ---    | ---         |
-| -g     | A glob pattern that identifies files to lint.  Multiple glob patterns can be specified. |
+| `<files>` | A glob pattern that identifies files to lint.  Multiple glob patterns can be specified. |
 | -w     | When present the files specified in the glob pattern(s) will be watched for changes and linted when they do change. |
 | -W     | This is the same as the -w command except that the specified files will be linted before the watch begins. |
 
