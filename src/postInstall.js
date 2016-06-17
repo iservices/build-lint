@@ -11,7 +11,8 @@ const eslintrcTarget = path.join(process.cwd(), '.eslintrc');
 fs.readFile(eslintrcSource, (errRead, data) => {
   if (!errRead) {
     fs.access(eslintrcTarget, errWrite => {
-      if (errWrite) {
+      if (!errWrite) {
+        console.log('Creating .eslintrc file: ' + eslintrcTarget);
         fs.writeFile(eslintrcTarget, data, { flags: 'wx' });
       }
     });
