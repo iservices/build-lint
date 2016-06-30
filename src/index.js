@@ -4,7 +4,7 @@
 
 const globby = require('globby');
 const chokidar = require('chokidar');
-const cp = require('child_process');
+const spawn = require('cross-spawn');
 const argsv = require('minimist')(process.argv.slice(2));
 
 /**
@@ -15,7 +15,7 @@ const argsv = require('minimist')(process.argv.slice(2));
  * @return {ChildProcess} The child process that does the linting.
  */
 function eslint(files) {
-  return cp.spawn('eslint', files, { stdio: 'inherit' });
+  return spawn('eslint', files, { stdio: 'inherit' });
 }
 
 /**
